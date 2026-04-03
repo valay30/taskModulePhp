@@ -12,14 +12,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $skip = ['customer_group_id'];
     foreach($_POST as $key => $value){
         if(!in_array($key,$skip)){
-            $group->value($key, $value);
+            $group->$key = $value;
         }
     }
 
     if($id === ''){
-        $group->value('created_date', date('Y-m-d H:i:s'));
+        $group->created_date = date('Y-m-d H:i:s');
     }else{
-        $group->value('updated_date', date('Y-m-d H:i:s'));
+        $group->updated_date = date('Y-m-d H:i:s');
     }
 
     $group->save();

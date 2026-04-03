@@ -28,36 +28,36 @@ if(isset($_GET['id'])){
 
         <div class="card-body">
             <form method="POST" action="save.php">
-                <input type="hidden" name="product_id" value="<?= $product->value('product_id') ?>">
+                <input type="hidden" name="product_id" value="<?= $product->product_id ?>">
 
                 <div class="mb-3">
                     <label class="form-label">Name</label>
                     <input type="text" name="name" class="form-control"
-                           value="<?= $product->value('name') ?>" required>
+                           value="<?= $product->name ?>" required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Quantity</label>
                     <input type="number" name="quantity" class="form-control"
-                           value="<?= $product->value('quantity') ?>" required>
+                           value="<?= $product->quantity ?>" required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Price</label>
                     <input type="text" name="price" class="form-control"
-                           value="<?= $product->value('price') ?>" required>
+                           value="<?= $product->price ?>" required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Description</label>
-                    <textarea name="description" class="form-control" rows="3"><?= $product->value('description') ?></textarea>
+                    <textarea name="description" class="form-control" rows="3"><?= $product->description ?></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Status</label>
                     <select name="status" class="form-select" required>
-                        <option value="1" <?= $product->value('status') == 1 ? 'selected' : '' ?>>Enabled</option>
-                        <option value="2" <?= $product->value('status') == 2 ? 'selected' : '' ?>>Disabled</option>
+                        <option value="1" <?= $product->status == 1 ? 'selected' : '' ?>>Enabled</option>
+                        <option value="2" <?= $product->status == 2 ? 'selected' : '' ?>>Disabled</option>
                     </select>
                 </div>
 

@@ -13,16 +13,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     foreach ($_POST as $key => $value){
         if(in_array($key,$skip)) continue;
         if($key === 'customer_group_id' && $value === ''){
-            $customer->value($key, null);
+            $customer->$key = null;
         } else {
-            $customer->value($key, $value);
+            $customer->$key = $value;
         }
     }
 
     if($id === ''){
-        $customer->value('created_date', date('Y-m-d H:i:s'));
+        $customer->created_date = date('Y-m-d H:i:s');
     }else{
-        $customer->value('updated_date', date('Y-m-d H:i:s'));
+        $customer->updated_date = date('Y-m-d H:i:s');
     }
 
     $customer->save();

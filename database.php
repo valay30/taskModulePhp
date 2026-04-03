@@ -2,11 +2,15 @@
 
 class database
 {
+    public $server = "localhost";
+    public $username = "root";
+    public $password = "root";
+    public $dbname = "TaskModule";
     protected $conn = null;
 
-    public function connection(){
+    public function connect(){
         if($this->conn === null){
-            $this->conn = mysqli_connect("localhost","root","root","TaskModule");
+            $this->conn = mysqli_connect($this->server,$this->username,$this->password,$this->dbname);
 
             if(!$this->conn){
                 die("Connection failed" . mysqli_connect_error());
@@ -16,25 +20,42 @@ class database
     }
 
     public function insert($query){
-        mysqli_query($this->connection(),$query);
-        return mysqli_insert_id($this->connection());
+        $result = mysqli_query($this->connect(), $query);
+        if(!$result){
+            return false;
+        }
+        return mysqli_insert_id($this->connect());
     }
 
     public function update($query){
-        return mysqli_query($this->connection(),$query);
+        $result = mysqli_query($this->connect(), $query);
+        if(!$result){
+            return false;
+        }
+        return true;
     }
 
     public function delete($query){
-        return mysqli_query($this->connection(), $query);
+        $result = mysqli_query($this->connect(), $query);
+        if(!$result){
+            return false;
+        }
+        return true;
     }
 
     public function fetchRow($query){
-        $result = mysqli_query($this->connection(),$query);
+    $result = mysqli_query($this->connect(), $query);
+        if(!$result){
+            return false;
+        }
         return mysqli_fetch_assoc($result);
     }
 
     public function fetchAll($query){
-        $result = mysqli_query($this->connection(), $query);
+        $result = mysqli_query($this->connect(), $query);
+        if(!$result){
+            return false;
+        }
 
         $rows = [];
         while($row = mysqli_fetch_assoc($result)){

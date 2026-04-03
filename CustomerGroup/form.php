@@ -20,24 +20,24 @@ if (isset($_GET['id'])) {
         </div>
         <div class="card-body">
             <form method="POST" action="save.php">
-                <input type="hidden" name="customer_group_id" value="<?= $group->value('customer_group_id') ?>">
+                <input type="hidden" name="customer_group_id" value="<?= $group->customer_group_id ?>">
 
                 <div class="mb-3">
                     <label class="form-label">Group Name</label>
                     <input type="text" name="group_name" class="form-control"
-                           value="<?= $group->value('group_name') ?>" required>
+                           value="<?= $group->group_name ?>" required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Description</label>
-                    <textarea name="description" class="form-control" rows="3"><?= $group->value('description') ?></textarea>
+                    <textarea name="description" class="form-control" rows="3"><?= $group->description ?></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Status</label>
                     <select name="status" class="form-select" required>
-                        <option value="1" <?= $group->value('status') == 1 ? 'selected' : '' ?>>Active</option>
-                        <option value="0" <?= $group->value('status') == 0 ? 'selected' : '' ?>>Inactive</option>
+                        <option value="1" <?= $group->status == 1 ? 'selected' : '' ?>>Active</option>
+                        <option value="0" <?= $group->status == 0 ? 'selected' : '' ?>>Inactive</option>
                     </select>
                 </div>
 
