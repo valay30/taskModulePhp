@@ -24,7 +24,7 @@ $groups = $groupModel->getAll();
         </div>
         <div class="card-body">
             <form method="POST" action="save.php">
-                <input type="hidden" name="customer_id" value="<?= $customer->value('customer_id') ?>">
+                <input type="hidden" name="customer_id" value="<?= $customer->customer_id ?>">
 
                 <div class="mb-3">
                     <label class="form-label">Customer Group</label>
@@ -32,7 +32,7 @@ $groups = $groupModel->getAll();
                         <option value="">— None —</option>
                         <?php foreach ($groups as $g): ?>
                             <option value="<?= $g['customer_group_id'] ?>"
-                                <?= $customer->value('customer_group_id') == $g['customer_group_id'] ? 'selected' : '' ?>>
+                                <?= $customer->customer_group_id == $g['customer_group_id'] ? 'selected' : '' ?>>
                                 <?= $g['group_name'] ?>
                             </option>
                         <?php endforeach; ?>
@@ -43,32 +43,32 @@ $groups = $groupModel->getAll();
                     <div class="col">
                         <label class="form-label">First Name</label>
                         <input type="text" name="first_name" class="form-control"
-                               value="<?= $customer->value('first_name') ?>" required>
+                               value="<?= $customer->first_name ?>" required>
                     </div>
                     <div class="col">
                         <label class="form-label">Last Name</label>
                         <input type="text" name="last_name" class="form-control"
-                               value="<?= $customer->value('last_name') ?>" required>
+                               value="<?= $customer->last_name ?>" required>
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Email</label>
                     <input type="email" name="email" class="form-control"
-                           value="<?= $customer->value('email') ?>" required>
+                           value="<?= $customer->email ?>" required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Phone</label>
                     <input type="text" name="phone" class="form-control"
-                           value="<?= $customer->value('phone') ?>">
+                           value="<?= $customer->phone ?>">
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Status</label>
                     <select name="status" class="form-select" required>
-                        <option value="1" <?= $customer->value('status') == 1 ? 'selected' : '' ?>>Active</option>
-                        <option value="0" <?= $customer->value('status') == 0 ? 'selected' : '' ?>>Inactive</option>
+                        <option value="1" <?= $customer->status == 1 ? 'selected' : '' ?>>Active</option>
+                        <option value="0" <?= $customer->status == 0 ? 'selected' : '' ?>>Inactive</option>
                     </select>
                 </div>
 

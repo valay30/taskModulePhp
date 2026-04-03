@@ -23,24 +23,24 @@ if(isset($_GET['ids'])){
 
         <div class="card-body">
             <form method="POST" action="save.php">
-                <input type="hidden" name="category_id" value="<?= $category->value('category_id') ?>">
+                <input type="hidden" name="category_id" value="<?= $category->category_id ?>">
 
                 <div class="mb-3">
                     <label class="form-label">Name</label>
                     <input type="text" name="name" class="form-control"
-                           value="<?= $category->value('name') ?>" required>
+                           value="<?= $category->name ?>" required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Description</label>
-                    <textarea name="description" class="form-control" rows="3"><?= $category->value('description') ?></textarea>
+                    <textarea name="description" class="form-control" rows="3"><?= $category->description ?></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Status</label>
                     <select name="status" class="form-select" required>
-                        <option value="1" <?= $category->value('status') == 1 ? 'selected' : '' ?>>Active</option>
-                        <option value="0" <?= $category->value('status') == 0 ? 'selected' : '' ?>>Inactive</option>
+                        <option value="1" <?= $category->status == 1 ? 'selected' : '' ?>>Active</option>
+                        <option value="0" <?= $category->status == 0 ? 'selected' : '' ?>>Inactive</option>
                     </select>
                 </div>
 

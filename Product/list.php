@@ -2,7 +2,13 @@
 require_once __DIR__ . '/product.php';
 
 $product = new Product();
-$rows = $product->getAll();
+// $rows = $product->getAll();
+
+echo "<pre>";
+$rows = $product->fetchAll("select * from {$product->tableName}");
+// $rows = $product->fetchRow("select * from {$product->tableName} where product_id = 3");
+// print_r($rows);
+// $rows = $product->getAll();
 ?>
 
 <!DOCTYPE html>
@@ -54,22 +60,22 @@ $rows = $product->getAll();
                         <?php foreach($rows as $row): ?>
                         <tr>
                             <td>
-                                <input type="checkbox" name="ids[]" value="<?= $row['product_id'] ?>">
+                                <input type="checkbox" name="ids[]" value="<?= $row->product_id ?>">
                             </td>
-                            <td><?= $row['product_id'] ?></td>
-                            <td><?= $row['name'] ?></td>
-                            <td><?= $row['quantity'] ?></td>
-                            <td>₹ <?= $row['price'] ?></td>
+                            <td><?= $row->product_id ?></td>
+                            <td><?= $row->name ?></td>
+                            <td><?= $row->quantity ?></td>
+                            <td>₹ <?= $row->price ?></td>
                             <td>
-                                <?php if($row['status'] == 1): ?>
+                                <?php if($row->status == 1): ?>
                                     <span class="badge bg-success">Enabled</span>
                                 <?php else: ?>
                                     <span class="badge bg-secondary">Disabled</span>
                                 <?php endif; ?>
                             </td>
-                            <td><?= $row['created_date'] ?></td>
-                            <td><?= $row['updated_date'] ?></td>
-                            <td><a href="Product/form.php?id=<?= $row['product_id'] ?>" class="btn btn-sm btn-warning">Edit</a></td>
+                            <td><?= $row->created_date ?></td>
+                            <td><?= $row->updated_date ?></td>
+                            <td><a href="Product/form.php?id=<?= $row->product_id ?>" class="btn btn-sm btn-warning">Edit</a></td>
                         </tr>
                         <?php endforeach; ?>
                     <?php else: ?>

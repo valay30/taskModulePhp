@@ -12,14 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $skip = ['category_id'];
     foreach ($_POST as $key => $value) {
         if (!in_array($key, $skip)) {
-            $category->value($key, $value);
+            $category->$key = $value;
         }
     }
 
     if ($id === '') {
-        $category->value('created_date', date('Y-m-d H:i:s'));
+        $category->created_date = date('Y-m-d H:i:s');
     } else {
-        $category->value('updated_date', date('Y-m-d H:i:s'));
+        $category->updated_date = date('Y-m-d H:i:s');
     }
 
     $category->save();

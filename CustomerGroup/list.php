@@ -37,20 +37,20 @@ $rows = $group->getAll();
                     <?php if (!empty($rows)): ?>
                         <?php foreach ($rows as $row): ?>
                         <tr>
-                            <td><input type="checkbox" name="ids[]" value="<?= $row['customer_group_id'] ?>"></td>
-                            <td><?= $row['customer_group_id'] ?></td>
-                            <td><?= htmlspecialchars($row['group_name']) ?></td>
-                            <td><?= htmlspecialchars($row['description'] ?? '') ?></td>
+                            <td><input type="checkbox" name="ids[]" value="<?= $row->customer_group_id ?>"></td>
+                            <td><?= $row->customer_group_id ?></td>
+                            <td><?= htmlspecialchars($row->group_name) ?></td>
+                            <td><?= htmlspecialchars($row->description ?? '') ?></td>
                             <td>
-                                <?php if ($row['status'] == 1): ?>
+                                <?php if ($row->status == 1): ?>
                                     <span class="badge bg-success">Active</span>
                                 <?php else: ?>
                                     <span class="badge bg-secondary">Inactive</span>
                                 <?php endif; ?>
                             </td>
-                            <td><?= $row['created_date'] ?></td>
-                            <td><?= $row['updated_date'] ?></td>
-                            <td><a href="CustomerGroup/form.php?id=<?= $row['customer_group_id'] ?>" class="btn btn-sm btn-warning">Edit</a></td>
+                            <td><?= $row->created_date ?></td>
+                            <td><?= $row->updated_date ?></td>
+                            <td><a href="CustomerGroup/form.php?id=<?= $row->customer_group_id ?>" class="btn btn-sm btn-warning">Edit</a></td>
                         </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
